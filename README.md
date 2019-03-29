@@ -3,7 +3,9 @@ Utilities for reading and comparing har files.
 
 # generate-checksums-for-diff.py
 Generates output in this format:
+```
 [url with scheme host and port removed] [tab] [md5 hash of http response body]
+```
 
 For example:
 ```
