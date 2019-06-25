@@ -4,6 +4,7 @@ import sys
 import json
 import re
 import md5
+import difflib
 
 reload(sys)  
 sys.setdefaultencoding('utf8')
@@ -25,7 +26,8 @@ with open(sys.argv[1]) as fh:
             url = re.sub(r"^.*://.*?\/", r"/", url)
         except:
             pass
-        m = md5.new()
-        m.update(entry['response']['content']['text'])
-        thehash = m.hexdigest()
-        print "%s\t%s" % (url, thehash)
+        if 'text' in entry['response']['content']:
+            m = md5.new()
+            m.update(entry['response']['content']['text'])
+            thehash = m.hexdigest()
+            print "%s\t%s" % (url, thehash)
